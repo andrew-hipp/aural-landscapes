@@ -40,3 +40,9 @@ should have functions to (1) accommodate point observations
 and ranges, (2) subset by observers and areas, (3) allow
 for plotting customization.
 }
+\examples{
+data(auralObservations)
+plot.auralLandscape(auralObservations,
+       taxa = 'robin|cardinal',
+       taxaGrep = TRUE)
+}
