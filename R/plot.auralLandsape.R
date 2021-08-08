@@ -30,7 +30,7 @@ plotAuralLandscape <- function(
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = FALSE,
   taxa = 'all', taxaGrep = FALSE,
-  show = TRUE
+  showPlot = TRUE
 ) {
   x <- x[month(x$date) %in% dateRange, ]
   x <- x[hour(hm(x$time)) %in% timeRange, ]
@@ -42,8 +42,8 @@ plotAuralLandscape <- function(
     if(!taxaGrep) x <- x[x$taxon %in% taxa, ]
     if(taxaGrep) x <- x[grep(taxa, x$taxon), ]
   }
-  out <- ggplot(x, aes(x=date, y=time, colour = taxon)) +
-    geom_point() +
+  out <- ggplot2::ggplot(x, aes(x=date, y=time, colour = taxon)) +
+    ggplot2::geom_point() +
     stat_chull(fill = NA)
   if(showPlot) print(out)
   return(out)
