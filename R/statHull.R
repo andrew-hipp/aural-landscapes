@@ -1,6 +1,6 @@
 # source: https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
 
-StatChull <- ggplot2::ggproto("StatChull",
+StatChull <- ggplot2::ggproto("StatChull", ggplot2::Stat,
   compute_group = function(data, scales) {
     data[chull(data$x, data$y), , drop = FALSE]
   },
