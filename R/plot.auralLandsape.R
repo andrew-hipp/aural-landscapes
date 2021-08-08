@@ -14,6 +14,11 @@
 #' @param taxa Character vector of length 1; taxa to include, or 'all'
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
 #' @param showPlot Boolean; plot or just return object?
+#' @examples
+#' data(auralObservations)
+#' plot.auralLandscape(auralObservations,
+#'        taxa = 'robin|cardinal',
+#'        taxaGrep = TRUE)
 #' @import tidyverse
 #' @import lubridate
 #' @export
