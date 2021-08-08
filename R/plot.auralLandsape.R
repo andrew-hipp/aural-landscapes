@@ -25,7 +25,7 @@ plot.auralLandscape <- function(
   show = TRUE
 ) {
   x <- x[month(x$date), ] %in% dateRange
-  x <- x[hour(hms(x$time)), ] %in% timeRange
+  x <- x[hour(hm(x$time)), ] %in% timeRange
   if(observers != 'all') {
     if(!obsGrep) x <- x[x$observer %in% observers, ]
     if(obsGrep) x <- x[grep(observers, x$observer), ]
