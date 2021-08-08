@@ -42,7 +42,7 @@ plotAuralLandscape <- function(
     if(!taxaGrep) x <- x[x$taxon %in% taxa, ]
     if(taxaGrep) x <- x[grep(taxa, x$taxon), ]
   }
-  out <- ggplot2::ggplot(x, aes(x=date, y=time, colour = taxon)) +
+  out <- ggplot2::ggplot(x, ggplot2::aes(x=date, y=time, colour = taxon)) +
     ggplot2::geom_point() +
     stat_chull(fill = NA)
   if(showPlot) print(out)
