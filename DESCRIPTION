@@ -1,0 +1,12 @@
+Roxygen: list(markdown = TRUE)
+Package: auralLandscapes
+Type: Package
+Title: Place-based aural landscapes
+Version: 0.1-1
+Date: 2021-08-08
+Author: Andrew L Hipp <ahipp@mortonarb.org>
+Maintainer: Andrew L Hipp <ahipp@mortonarb.org>
+Description: A tool for visualizing place-based aural landscapes in
+  annual and daily time.
+License: GPL-3
+RoxygenNote: 7.1.1
