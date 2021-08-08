@@ -44,7 +44,7 @@ plotAuralLandscape <- function(
   }
   out <- ggplot2::ggplot(x, ggplot2::aes(x=date, y=time, colour = taxon)) +
     ggplot2::geom_point() +
-    stat_chull(fill = NA, colour = taxon)
+    stat_chull(fill = NA, colour = x$taxon)
   if(showPlot) print(out)
   return(out)
 }
