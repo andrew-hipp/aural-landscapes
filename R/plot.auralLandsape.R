@@ -1,6 +1,6 @@
 #' Plot an aural landscape from a structured dataset
 #'
-#' `plot.auralLandscape` currently does a simple 2-d plot
+#' `plotAuralLandscape` currently does a simple 2-d plot
 #'   of observations by time of day and day of year. Eventually
 #'   should have functions to (1) accommodate point observations
 #'   and ranges, (2) subset by observers and areas, (3) allow
@@ -14,15 +14,18 @@
 #' @param taxa Character vector of length 1; taxa to include, or 'all'
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
 #' @param showPlot Boolean; plot or just return object?
-#' @examples
-#' data(auralObservations)
-#' plot.auralLandscape(auralObservations,
-#'        taxa = 'robin|cardinal',
-#'        taxaGrep = TRUE)
+#'
 #' @import tidyverse
 #' @import lubridate
+#'
+#' @examples
+#' data(auralObservations)
+#' plotAuralLandscape(auralObservations,
+#'        taxa = 'robin|cardinal',
+#'        taxaGrep = TRUE)
+#'
 #' @export
-plot.auralLandscape <- function(
+plotAuralLandscape <- function(
   x, plotType = c('hull', 'points'),
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = FALSE,

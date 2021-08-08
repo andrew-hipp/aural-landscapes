@@ -9,4 +9,5 @@ Maintainer: Andrew L Hipp <ahipp@mortonarb.org>
 Description: A tool for visualizing place-based aural landscapes in
   annual and daily time.
 License: GPL-3
+LazyData: TRUE
 RoxygenNote: 7.1.1
