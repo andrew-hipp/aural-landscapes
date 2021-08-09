@@ -13,10 +13,12 @@
 #' @param obsGrep Boolean; use `grep` with `observers`?
 #' @param taxa Character vector of length 1; taxa to include, or 'all'
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
+#' @param taxonPalette Color palette for taxa; default is color-blind with black
 #' @param showPlot Boolean; plot or just return object?
 #'
 #' @import tidyverse
 #' @import lubridate
+#' @import dplyr
 #'
 #' @examples
 #' data(auralObservations)
@@ -30,8 +32,12 @@ plotAuralLandscape <- function(
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = FALSE,
   taxa = 'all', taxaGrep = FALSE,
+  taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
   showPlot = TRUE
 ) {
+  require(ggplot2); require(magrittr); require(dplyr)
+  x$date <- as_date(x$date)
+  # x$time <- hm(x$time)
   x <- x[month(x$date) %in% dateRange, ]
   x <- x[hour(hm(x$time)) %in% timeRange, ]
   if(observers != 'all') {
@@ -42,9 +48,18 @@ plotAuralLandscape <- function(
     if(!taxaGrep) x <- x[x$taxon %in% taxa, ]
     if(taxaGrep) x <- x[grep(taxa, x$taxon), ]
   }
-  out <- ggplot2::ggplot(x, ggplot2::aes(x=date, y=time, colour = taxon)) +
-    ggplot2::geom_point() +
-    stat_chull(fill = NA, colour = x$taxon)
+  # x_hull <- x %>%
+  #    group_by(taxon) %>%
+  #    slice(chull(date, time))
+  out <- ggplot(x, aes(x=date, y=time, color = taxon)) +
+    geom_point(size = 3) +
+    scale_color_manual(values=taxonPalette)
+    # +
+    # geom_polygon(data = x_hull, alpha = 0.5)
   if(showPlot) print(out)
   return(out)
 }
+
+#
+# # Update the plot with a fill group, and overlay the new hulls
+# p + aes(fill = factor(cyl)) + geom_polygon(data = hull_cyl, alpha = 0.5)

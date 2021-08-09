@@ -13,7 +13,9 @@ plotAuralLandscape(
   obsGrep = FALSE,
   taxa = "all",
   taxaGrep = FALSE,
-  show = TRUE
+  taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
+    "#D55E00", "#CC79A7"),
+  showPlot = TRUE
 )
 }
 \arguments{
@@ -30,6 +32,8 @@ plotAuralLandscape(
 \item{taxa}{Character vector of length 1; taxa to include, or 'all'}
 
 \item{taxaGrep}{Boolean; use \code{grep} with \code{taxa}?}
+
+\item{taxonPalette}{Color palette for taxa; default is color-blind with black}
 
 \item{showPlot}{Boolean; plot or just return object?}
 }
