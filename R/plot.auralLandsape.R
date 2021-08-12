@@ -55,8 +55,10 @@ plotAuralLandscape <- function(
   #    group_by(taxon) %>%
   #    slice(chull(date, time))
   out <- ggplot(x, aes(x=date, y=time, color = taxon)) +
-    geom_point(size = 3) +
+  out <- out + geom_point(size = 3)
+  if(length(unique(x$taxon)) <= length(taxonPalette) {
     scale_color_manual(values=taxonPalette)
+  }
     # +
     # geom_polygon(data = x_hull, alpha = 0.5)
   if(showPlot) print(out)
