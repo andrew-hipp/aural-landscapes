@@ -7,12 +7,14 @@
 plotAuralLandscape(
   x,
   plotType = c("hull", "points"),
+  ptSize = 4,
   dateRange = c(1:12),
   timeRange = c(3:22),
   observers = "all",
-  obsGrep = FALSE,
+  obsGrep = TRUE,
   taxa = "all",
-  taxaGrep = FALSE,
+  taxaGrep = TRUE,
+  aggregateYears = TRUE,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
     "#D55E00", "#CC79A7"),
   showPlot = TRUE
@@ -20,6 +22,10 @@ plotAuralLandscape(
 }
 \arguments{
 \item{x}{\code{data.frame} of observations, with taxon, day, month, year, time (in 24 hr notation)}
+
+\item{plotType}{not currently implemented}
+
+\item{ptSize}{Point size}
 
 \item{dateRange}{Vector of months to include}
 
@@ -32,6 +38,8 @@ plotAuralLandscape(
 \item{taxa}{Character vector of length 1; taxa to include, or 'all'}
 
 \item{taxaGrep}{Boolean; use \code{grep} with \code{taxa}?}
+
+\item{aggregateYears}{Ignore year when plotting, aggregate all dates to yr = 1}
 
 \item{taxonPalette}{Color palette for taxa; default is color-blind with black}
 
