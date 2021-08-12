@@ -7,6 +7,8 @@
 #'   for plotting customization.
 #'
 #' @param x `data.frame` of observations, with taxon, day, month, year, time (in 24 hr notation)
+#' @param plotType not currently implemented
+#' @param ptSize Point size
 #' @param dateRange Vector of months to include
 #' @param timeRange Vector of hours to include (24 hr notation)
 #' @param observers Character vector of length 1; observers to include, or 'all'
@@ -29,7 +31,7 @@
 #'
 #' @export
 plotAuralLandscape <- function(
-  x, plotType = c('hull', 'points'),
+  x, plotType = c('hull', 'points'), ptSize = 4,
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
   taxa = 'all', taxaGrep = TRUE,
@@ -55,7 +57,7 @@ plotAuralLandscape <- function(
   #    group_by(taxon) %>%
   #    slice(chull(date, time))
   out <- ggplot(x, aes(x=date, y=time, color = taxon))
-  out <- out + geom_point(size = 3)
+  out <- out + geom_point(size = ptSize)
   if(length(unique(x$taxon)) <= length(taxonPalette)) {
     out <- out + scale_color_manual(values=taxonPalette)
   }
