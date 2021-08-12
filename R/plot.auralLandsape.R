@@ -14,6 +14,7 @@
 #' @param taxa Character vector of length 1; taxa to include, or 'all'
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
 #' @param taxonPalette Color palette for taxa; default is color-blind with black
+#' @param aggregateYears Ignore year when plotting, aggregate all dates to yr = 1
 #' @param showPlot Boolean; plot or just return object?
 #'
 #' @import tidyverse
@@ -32,11 +33,13 @@ plotAuralLandscape <- function(
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = FALSE,
   taxa = 'all', taxaGrep = FALSE,
+  aggregateYears = TRUE,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
   showPlot = TRUE
 ) {
   require(ggplot2); require(magrittr); require(dplyr)
-  x$date <- as_date(x$date)
+  x$date <- ymd(x$date)
+  if(aggregateYears) year(x$date) <- 1
   # x$time <- hm(x$time)
   x <- x[month(x$date) %in% dateRange, ]
   x <- x[hour(hm(x$time)) %in% timeRange, ]
