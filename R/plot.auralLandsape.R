@@ -31,8 +31,8 @@
 plotAuralLandscape <- function(
   x, plotType = c('hull', 'points'),
   dateRange = c(1:12), timeRange = c(3:22),
-  observers = 'all', obsGrep = FALSE,
-  taxa = 'all', taxaGrep = FALSE,
+  observers = 'all', obsGrep = TRUE,
+  taxa = 'all', taxaGrep = TRUE,
   aggregateYears = TRUE,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
   showPlot = TRUE
