@@ -66,8 +66,6 @@ a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/au
 a$time <- a$time * 24
 ## a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
        as.difftime(a$time, unit="hours"), "\%H:\%M")
-plotAuralLandscape(a,
-       taxa = 'robin|cardinal',
-       taxaGrep = TRUE)
+plotAuralLandscape(a, taxa = 'white-thr|song|field|peeper|chorus', taxaGrep = TRUE)
 
 }
