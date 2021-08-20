@@ -14,7 +14,9 @@ plotAuralLandscape(
   obsGrep = TRUE,
   taxa = "all",
   taxaGrep = TRUE,
+  addAll = "gray85",
   aggregateYears = TRUE,
+  timeAsDecimal = TRUE,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
     "#D55E00", "#CC79A7"),
   showPlot = TRUE
@@ -39,7 +41,11 @@ plotAuralLandscape(
 
 \item{taxaGrep}{Boolean; use \code{grep} with \code{taxa}?}
 
+\item{addAll}{\code{NA} or named color; if color, add all obs in background}
+
 \item{aggregateYears}{Ignore year when plotting, aggregate all dates to yr = 1}
+
+\item{timeAsDecimal}{Boolean; time is decimal? alternative: H:M \link{24hr}}
 
 \item{taxonPalette}{Color palette for taxa; default is color-blind with black}
 
@@ -53,8 +59,14 @@ and ranges, (2) subset by observers and areas, (3) allow
 for plotting customization.
 }
 \examples{
-data(auralObservations)
-plotAuralLandscape(auralObservations,
+## data(auralObservations)
+## get most recent data:
+a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/auralObservations.xlsx?raw=true',
+            detectDates=T)
+a$time <- a$time * 24
+## a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
+       as.difftime(a$time, unit="hours"), "\%H:\%M")
+plotAuralLandscape(a,
        taxa = 'robin|cardinal',
        taxaGrep = TRUE)
 
