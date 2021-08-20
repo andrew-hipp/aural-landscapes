@@ -28,6 +28,7 @@
 #' @examples
 #' ## data(auralObservations)
 #' ## get most recent data:
+#' require(openxlsx)
 #' a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/auralObservations.xlsx?raw=true',
 #'             detectDates=T)
 #' a$time <- a$time * 24
