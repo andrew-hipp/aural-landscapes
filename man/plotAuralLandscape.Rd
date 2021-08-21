@@ -45,7 +45,7 @@ plotAuralLandscape(
 
 \item{aggregateYears}{Ignore year when plotting, aggregate all dates to yr = 1}
 
-\item{timeAsDecimal}{Boolean; time is decimal? alternative: H:M \link{24hr}}
+\item{timeAsDecimal}{Boolean; time is decimal? alternative: H:M (24 hour)}
 
 \item{taxonPalette}{Color palette for taxa; default is color-blind with black}
 
@@ -64,9 +64,13 @@ for plotting customization.
 require(openxlsx)
 a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/auralObservations.xlsx?raw=true',
             detectDates=T)
+## use this if you are using decimal time:
 a$time <- a$time * 24
-## a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
-       as.difftime(a$time, unit="hours"), "\%H:\%M")
+## use this if you want to convert decimal time to HM:
+\dontrun{
+  a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
+           as.difftime(a$time, unit="hours"), "\%H:\%M")
+}
 plotAuralLandscape(a, taxa = 'white-thr|song|field|peeper|chorus', taxaGrep = TRUE)
 
 }

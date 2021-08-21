@@ -18,7 +18,7 @@
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
 #' @param taxonPalette Color palette for taxa; default is color-blind with black
 #' @param aggregateYears Ignore year when plotting, aggregate all dates to yr = 1
-#' @param timeAsDecimal Boolean; time is decimal? alternative: H:M [24hr]
+#' @param timeAsDecimal Boolean; time is decimal? alternative: H:M (24 hour)
 #' @param showPlot Boolean; plot or just return object?
 #'
 #' @import tidyverse

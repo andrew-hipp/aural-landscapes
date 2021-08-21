@@ -3,4 +3,5 @@
 export(plotAuralLandscape)
 import(dplyr)
 import(lubridate)
+import(openxlsx)
 import(tidyverse)
