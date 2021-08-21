@@ -24,6 +24,7 @@
 #' @import tidyverse
 #' @import lubridate
 #' @import dplyr
+#' @import openxlsx
 #'
 #' @examples
 #' ## data(auralObservations)
