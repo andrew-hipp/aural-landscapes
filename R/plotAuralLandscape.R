@@ -33,7 +33,7 @@
 #'             detectDates=T)
 #' a$time <- a$time * 24
 #' ## a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
-#'        as.difftime(a$time, unit="hours"), "%H:%M")
+#' ##      as.difftime(a$time, unit="hours"), "%H:%M")
 #' plotAuralLandscape(a, taxa = 'white-thr|song|field|peeper|chorus', taxaGrep = TRUE)
 #'
 #' @export
