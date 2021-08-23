@@ -9,6 +9,7 @@ plotAuralLandscape(
   plotType = c("hull", "points"),
   ptSize = 5,
   nullSize = 2,
+  legPos = c(0.85, 0.85),
   dateRange = c(1:12),
   timeRange = c(3:22),
   observers = "all",
@@ -31,6 +32,8 @@ plotAuralLandscape(
 \item{ptSize}{Point size for selected observations}
 
 \item{nullSize}{Point size for all observations, if \code{addAll = T}}
+
+\item{legPos}{Legend position; if \code{NA}, default}
 
 \item{dateRange}{Vector of months to include}
 

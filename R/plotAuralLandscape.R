@@ -10,6 +10,7 @@
 #' @param plotType not currently implemented
 #' @param ptSize Point size for selected observations
 #' @param nullSize Point size for all observations, if `addAll = T`
+#' @param legPos Legend position; if `NA`, default
 #' @param dateRange Vector of months to include
 #' @param timeRange Vector of hours to include (24 hr notation)
 #' @param observers Character vector of length 1; observers to include, or 'all'
@@ -44,7 +45,8 @@
 #'
 #' @export
 plotAuralLandscape <- function(
-  x, plotType = c('hull', 'points'), ptSize = 5, nullSize = 2,
+  x, plotType = c('hull', 'points'),
+  ptSize = 5, nullSize = 2, legPos = c(0.85, 0.85),
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
   taxa = 'all', taxaGrep = TRUE, addAll = 'gray85',
@@ -77,8 +79,7 @@ plotAuralLandscape <- function(
   if(length(unique(x.plot$taxon)) <= length(taxonPalette)) {
     out <- out + scale_color_manual(values=taxonPalette)
   }
-    # +
-    # geom_polygon(data = x_hull, alpha = 0.5)
+  if(!is.na(legPos[1])) out <- out + theme(legend.position = legPos)
   if(showPlot) print(out)
   return(out)
 }
