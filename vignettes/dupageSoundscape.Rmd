@@ -1,8 +1,9 @@
 ---
-title: "dupageSoundscape"
+title: "Aural landscapes of DuPage County"
+#output: rmarkdown::pdf_document
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{dupageSoundscape}
+  %\VignetteIndexEntry{"Aural landscapes of DuPage County"}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,14 +15,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(auralLandscapes)
-```
-# Aural landscapes of DuPage County
-
 ## Running the code
 First, let's grab my most recent observations:
 ```{r}
+library(auralLandscapes)
+require(openxlsx)
 a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/auralObservations.xlsx?raw=true',
             detectDates=T)
 ## use this if you are using decimal time:
@@ -30,11 +28,12 @@ a$time <- a$time * 24
 
 ## Looking at observations
 First, the herps:
-```{r}
-aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus', dateRange=c(1:11))
+```{r, fig.width=8, fig.height = 4, out.width="100%"}
+aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus',
+  dateRange=c(1:11), legPos = c(0.9, 0.82))
 ```
 
 Then, robins and cardinals:
-```{r}
+```{r, fig.width=8, fig.height = 4, out.width="100%"}
 aur.robCard <- plotAuralLandscape(a, taxa = 'robin|cardinal', dateRange=c(1:11))
 ```

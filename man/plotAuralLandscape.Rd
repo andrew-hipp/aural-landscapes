@@ -7,7 +7,7 @@
 plotAuralLandscape(
   x,
   plotType = c("hull", "points"),
-  ptSize = 5,
+  ptSize = 4,
   nullSize = 2,
   legPos = c(0.85, 0.85),
   dateRange = c(1:12),
