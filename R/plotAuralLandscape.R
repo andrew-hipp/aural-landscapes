@@ -8,6 +8,7 @@
 #'
 #' @param x `data.frame` of observations, with taxon, day, month, year, time (in 24 hr notation)
 #' @param plotType not currently implemented
+#' @param addJitter Boolean; jitter points for additional visibility?
 #' @param ptSize Point size for selected observations
 #' @param nullSize Point size for all observations, if `addAll = T`
 #' @param legPos Legend position; if `NA`, default
@@ -45,7 +46,7 @@
 #'
 #' @export
 plotAuralLandscape <- function(
-  x, plotType = c('hull', 'points'),
+  x, plotType = c('hull', 'points'), addJitter = TRUE,
   ptSize = 4, nullSize = 2, legPos = c(0.85, 0.85),
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
@@ -80,6 +81,7 @@ plotAuralLandscape <- function(
     out <- out + scale_color_manual(values=taxonPalette)
   }
   if(!is.na(legPos[1])) out <- out + theme(legend.position = legPos)
+  if(addJitter) out <- out <- geom_jitter()
   if(showPlot) print(out)
   return(out)
 }

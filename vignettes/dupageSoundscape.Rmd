@@ -20,11 +20,40 @@ First, let's grab my most recent observations:
 ```{r}
 library(auralLandscapes)
 require(openxlsx)
+require(magrittr)
 a <- read.xlsx('https://github.com/andrew-hipp/auralLandscapes/blob/main/data/auralObservations.xlsx?raw=true',
             detectDates=T)
 ## use this if you are using decimal time:
 a$time <- a$time * 24
 ```
+
+The data are organized by taxon, time, date, with additional optional fields that are currently ignored:
+
+```{r}
+names(a)
+```
+
+At this point, you only have to have the three columns `taxon`, `date`, and `time` in your spreadsheet. Any others are gravy. If you have your own data in an Excel spreadsheet in xlsx format, you can read it in using `read.xlsx` with `detectDates = T`, and then multiply the decimal times by 24 to get hours that make sense. This is a bit of a kludge, and other formats don't currently work so well. Note two bits of formatting fussiness:
+
+ * dates have to be in YYYY-MM-DD format (e.g., 2021-08-20)
+ * times are in HH:MM 24-hour format (e.g., 08:50 or 21:45)
+
+At the outset, it might be useful to investigate how many taxa you have observed:
+
+```{r}
+a$taxon %>% unique %>% sort
+a$taxon %>% unique %>% sort %>% length
+```
+
+... and probably double-check for orthographic errors (e.g., including both "cardinal" and "cardinals", or both "white-throated sparrow" and "white throated sparrow"). These can be corrected manually or on the fly; I would recommend cleaning up your data first b/f plotting rather than creating code to clean it on the fly.
+
+Then, consider which observations you have the most of:
+
+```{r}
+a$taxon %>% table %>% sort(decreasing = TRUE) %>% head(15)
+```
+
+Once you've done some of this preliminary work, the question is what aspects of your aural landscape you want to explore.
 
 ## Looking at observations
 First, the herps:
@@ -36,4 +65,13 @@ aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus',
 Then, robins and cardinals:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
 aur.robCard <- plotAuralLandscape(a, taxa = 'robin|cardinal', dateRange=c(1:11))
+```
+
+the leading edge of a few harbingers of spring:
+```{r, fig.width=8, fig.height = 4, out.width="100%"}
+aur.harbingers <-
+  plotAuralLandscape(a,
+    taxa = 'blackbird|peeper|chorus|song sparrow|black-throated',
+    dateRange = c(2:5),
+    legPos = NA)
 ```

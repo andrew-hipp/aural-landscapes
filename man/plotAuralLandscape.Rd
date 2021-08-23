@@ -7,6 +7,7 @@
 plotAuralLandscape(
   x,
   plotType = c("hull", "points"),
+  addJitter = TRUE,
   ptSize = 4,
   nullSize = 2,
   legPos = c(0.85, 0.85),
@@ -28,6 +29,8 @@ plotAuralLandscape(
 \item{x}{\code{data.frame} of observations, with taxon, day, month, year, time (in 24 hr notation)}
 
 \item{plotType}{not currently implemented}
+
+\item{addJitter}{Boolean; jitter points for additional visibility?}
 
 \item{ptSize}{Point size for selected observations}
 
