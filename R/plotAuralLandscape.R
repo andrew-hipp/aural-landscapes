@@ -8,7 +8,8 @@
 #'
 #' @param x `data.frame` of observations, with taxon, day, month, year, time (in 24 hr notation)
 #' @param plotType not currently implemented
-#' @param ptSize Point size
+#' @param ptSize Point size for selected observations
+#' @param nullSize Point size for all observations, if `addAll = T`
 #' @param dateRange Vector of months to include
 #' @param timeRange Vector of hours to include (24 hr notation)
 #' @param observers Character vector of length 1; observers to include, or 'all'
@@ -39,11 +40,11 @@
 #'   a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
 #'            as.difftime(a$time, unit="hours"), "%H:%M")
 #' }
-#' plotAuralLandscape(a, taxa = 'white-thr|song|field|peeper|chorus', taxaGrep = TRUE)
+#' plotAuralLandscape(a, taxa = 'robin|cardinal|peeper|chorus')
 #'
 #' @export
 plotAuralLandscape <- function(
-  x, plotType = c('hull', 'points'), ptSize = 4,
+  x, plotType = c('hull', 'points'), ptSize = 5, nullSize = 2,
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
   taxa = 'all', taxaGrep = TRUE, addAll = 'gray85',
@@ -71,7 +72,7 @@ plotAuralLandscape <- function(
   #    slice(chull(date, time))
   out <- ggplot(x.plot, aes(x=date, y=time, color = taxon))
   if(!is.na(addAll))
-    out <- out + geom_point(data = x, size = (ptSize-1), color = addAll)
+    out <- out + geom_point(data = x, size = nullSize, color = addAll)
   out <- out + geom_point(size = ptSize)
   if(length(unique(x.plot$taxon)) <= length(taxonPalette)) {
     out <- out + scale_color_manual(values=taxonPalette)
