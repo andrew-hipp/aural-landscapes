@@ -7,7 +7,7 @@
 plotAuralLandscape(
   x,
   plotType = c("hull", "points"),
-  addJitter = TRUE,
+  addJitter = FALSE,
   ptSize = 4,
   nullSize = 2,
   legPos = c(0.85, 0.85),
@@ -20,6 +20,7 @@ plotAuralLandscape(
   addAll = "gray85",
   aggregateYears = TRUE,
   timeAsDecimal = TRUE,
+  colorAlpha = 0.6,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
     "#D55E00", "#CC79A7"),
   showPlot = TRUE
@@ -55,6 +56,8 @@ plotAuralLandscape(
 \item{aggregateYears}{Ignore year when plotting, aggregate all dates to yr = 1}
 
 \item{timeAsDecimal}{Boolean; time is decimal? alternative: H:M (24 hour)}
+
+\item{colorAlpha}{Transparency of points}
 
 \item{taxonPalette}{Color palette for taxa; default is color-blind with black}
 

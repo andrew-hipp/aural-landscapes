@@ -19,9 +19,10 @@
 #' @param taxa Character vector of length 1; taxa to include, or 'all'
 #' @param addAll `NA` or named color; if color, add all obs in background
 #' @param taxaGrep Boolean; use `grep` with `taxa`?
-#' @param taxonPalette Color palette for taxa; default is color-blind with black
 #' @param aggregateYears Ignore year when plotting, aggregate all dates to yr = 1
 #' @param timeAsDecimal Boolean; time is decimal? alternative: H:M (24 hour)
+#' @param taxonPalette Color palette for taxa; default is color-blind with black
+#' @param colorAlpha Transparency of points
 #' @param showPlot Boolean; plot or just return object?
 #'
 #' @import tidyverse
@@ -46,13 +47,14 @@
 #'
 #' @export
 plotAuralLandscape <- function(
-  x, plotType = c('hull', 'points'), addJitter = TRUE,
+  x, plotType = c('hull', 'points'), addJitter = FALSE,
   ptSize = 4, nullSize = 2, legPos = c(0.85, 0.85),
   dateRange = c(1:12), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
   taxa = 'all', taxaGrep = TRUE, addAll = 'gray85',
   aggregateYears = TRUE,
   timeAsDecimal = TRUE,
+  colorAlpha = 0.6,
   taxonPalette = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
   showPlot = TRUE
 ) {
@@ -76,12 +78,12 @@ plotAuralLandscape <- function(
   out <- ggplot(x.plot, aes(x=date, y=time, color = taxon))
   if(!is.na(addAll))
     out <- out + geom_point(data = x, size = nullSize, color = addAll)
-  out <- out + geom_point(size = ptSize)
+  out <- out + geom_point(size = ptSize, alpha = colorAlpha)
   if(length(unique(x.plot$taxon)) <= length(taxonPalette)) {
     out <- out + scale_color_manual(values=taxonPalette)
   }
   if(!is.na(legPos[1])) out <- out + theme(legend.position = legPos)
-  if(addJitter) out <- out <- geom_jitter()
+  if(addJitter) out <- out + geom_jitter()
   if(showPlot) print(out)
   return(out)
 }
