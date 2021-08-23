@@ -11,3 +11,7 @@ Description: A tool for visualizing place-based aural landscapes in
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
