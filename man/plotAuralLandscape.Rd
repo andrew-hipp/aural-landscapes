@@ -7,7 +7,8 @@
 plotAuralLandscape(
   x,
   plotType = c("hull", "points"),
-  ptSize = 4,
+  ptSize = 5,
+  nullSize = 2,
   dateRange = c(1:12),
   timeRange = c(3:22),
   observers = "all",
@@ -27,7 +28,9 @@ plotAuralLandscape(
 
 \item{plotType}{not currently implemented}
 
-\item{ptSize}{Point size}
+\item{ptSize}{Point size for selected observations}
+
+\item{nullSize}{Point size for all observations, if \code{addAll = T}}
 
 \item{dateRange}{Vector of months to include}
 
@@ -71,6 +74,6 @@ a$time <- a$time * 24
   a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
            as.difftime(a$time, unit="hours"), "\%H:\%M")
 }
-plotAuralLandscape(a, taxa = 'white-thr|song|field|peeper|chorus', taxaGrep = TRUE)
+plotAuralLandscape(a, taxa = 'robin|cardinal|peeper|chorus')
 
 }
