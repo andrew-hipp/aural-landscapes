@@ -71,7 +71,7 @@ plotAuralLandscape <- function(
   if(taxa != 'all') {
     if(!taxaGrep) x.plot <- x[x$taxon %in% taxa, ]
     if(taxaGrep) x.plot <- x[grep(taxa, x$taxon), ]
-  }
+  } else x.plot <- x
   # x_hull <- x %>%
   #    group_by(taxon) %>%
   #    slice(chull(date, time))

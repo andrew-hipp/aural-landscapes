@@ -1,9 +1,9 @@
 ---
-title: "Aural landscapes of DuPage County"
+title: Aural landscapes of DuPage County
 #output: rmarkdown::pdf_document
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{"Aural landscapes of DuPage County"}
+  %\VignetteIndexEntry{Aural landscapes of DuPage County}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -59,7 +59,7 @@ Once you've done some of this preliminary work, the question is what aspects of 
 First, the herps:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
 aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus',
-  dateRange=c(1:11), legPos = c(0.9, 0.82))
+  dateRange=1:11, legPos = c(0.9, 0.82))
 ```
 
 Then, robins and cardinals:
@@ -71,7 +71,7 @@ the leading edge of a few harbingers of spring:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
 aur.harbingers <-
   plotAuralLandscape(a,
-    taxa = 'blackbird|peeper|chorus|song sparrow|black-throated',
-    dateRange = c(2:5),
-    legPos = NA)
+    taxa = 'blackbird|peeper|chorus|song sparrow|black-throated|woodcock',
+    dateRange = 2:5,
+    legPos = NA, colorAlpha = 1.0)
 ```
