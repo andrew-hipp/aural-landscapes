@@ -74,6 +74,6 @@ a$time <- a$time * 24
   a$time <- format(ISOdatetime(1900,1,1,0,0,0, tz="GMT") +
            as.difftime(a$time, unit="hours"), "\%H:\%M")
 }
-plotAuralLandscape(a, taxa = 'robin|cardinal|peeper|chorus')
+out <- plotAuralLandscape(a, taxa = 'robin|cardinal|peeper|chorus')
 
 }
