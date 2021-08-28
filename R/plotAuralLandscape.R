@@ -64,6 +64,7 @@ plotAuralLandscape <- function(
   # x$time <- hm(x$time)
   x <- x[month(x$date) %in% dateRange, ]
   if(!timeAsDecimal) x <- x[hour(hm(x$time)) %in% timeRange, ]
+  if(timeAsDecimal) x <- x[x$time >= min(timeRange) & x$time <= max(timeRange), ]
   if(observers != 'all') {
     if(!obsGrep) x <- x[x$observer %in% observers, ]
     if(obsGrep) x <- x[grep(observers, x$observer), ]
