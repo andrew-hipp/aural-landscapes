@@ -60,20 +60,25 @@ Once you've done some of this preliminary work, the question is what aspects of 
 ## Looking at observations
 First, the herps:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
-aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus',
-  dateRange=1:11, legPos = c(0.9, 0.82))
+aur.herps <- plotAuralLandscape(a, taxa = 'american toad|peeper|chorus')
 ```
 
 Then, robins and cardinals:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
-aur.robCard <- plotAuralLandscape(a, taxa = 'robin|cardinal', dateRange=c(1:11))
+aur.robCard <- plotAuralLandscape(a, taxa = 'robin|cardinal')
 ```
 
-the leading edge of a few harbingers of spring:
+A range of suburban birds, excluding robins and cardinals:
+
+```{r, fig.width=8, fig.height = 4, out.width="100%"}
+aur.suburbs <- plotAuralLandscape(a, taxa = 'chickadee|wren|goldfinch|dove')
+```
+
+The leading edge of a few bird-harbingers of spring:
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
 aur.harbingers <-
   plotAuralLandscape(a,
-    taxa = 'blackbird|peeper|chorus|song sparrow|black-throated|woodcock',
+    taxa = 'blackbird|song sparrow|black-throated|woodcock',
     dateRange = 2:5,
     legPos = NA, colorAlpha = 1.0)
 ```

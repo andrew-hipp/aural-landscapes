@@ -11,7 +11,7 @@ plotAuralLandscape(
   ptSize = 4,
   nullSize = 2,
   legPos = c(0.85, 0.85),
-  dateRange = c(1:12),
+  dateRange = c(1:11),
   timeRange = c(3:22),
   observers = "all",
   obsGrep = TRUE,

@@ -49,7 +49,7 @@
 plotAuralLandscape <- function(
   x, plotType = c('hull', 'points'), addJitter = FALSE,
   ptSize = 4, nullSize = 2, legPos = c(0.85, 0.85),
-  dateRange = c(1:12), timeRange = c(3:22),
+  dateRange = c(1:11), timeRange = c(3:22),
   observers = 'all', obsGrep = TRUE,
   taxa = 'all', taxaGrep = TRUE, addAll = 'gray85',
   aggregateYears = TRUE,
