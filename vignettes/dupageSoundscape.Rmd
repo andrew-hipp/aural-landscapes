@@ -1,6 +1,8 @@
 ---
 title: Aural landscapes of DuPage County
 #output: rmarkdown::pdf_document
+author: Andrew L. Hipp (ahipp@mortonarb.org)
+date: 28 August 2021
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Aural landscapes of DuPage County}
@@ -74,4 +76,12 @@ aur.harbingers <-
     taxa = 'blackbird|peeper|chorus|song sparrow|black-throated|woodcock',
     dateRange = 2:5,
     legPos = NA, colorAlpha = 1.0)
+```
+
+How about the morning songs of very early spring:
+```{r, fig.width=8, fig.height = 4, out.width="100%"}
+aur.springMornings <- plotAuralLandscape(a,
+  taxa = 'robin|dove|chorus|peeper|woodcock|cardinal|song sparrow',
+  dateRange = 1:4, timeRange = c(4:6),
+  legPos = NA, colorAlpha = 1.0)
 ```
