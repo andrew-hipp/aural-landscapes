@@ -52,7 +52,7 @@ a$taxon %>% unique %>% sort %>% length
 Then, consider which observations you have the most of:
 
 ```{r}
-a$taxon %>% table %>% sort(decreasing = TRUE) %>% head(15)
+a$taxon %>% table %>% sort(decreasing = TRUE) %>% head(20)
 ```
 
 Once you've done some of this preliminary work, the question is what aspects of your aural landscape you want to explore.
