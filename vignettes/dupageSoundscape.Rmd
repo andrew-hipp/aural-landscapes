@@ -71,7 +71,7 @@ aur.robCard <- plotAuralLandscape(a, taxa = 'robin|cardinal')
 A range of suburban birds, excluding robins and cardinals:
 
 ```{r, fig.width=8, fig.height = 4, out.width="100%"}
-aur.suburbs <- plotAuralLandscape(a, taxa = 'chickadee|wren|goldfinch|dove')
+aur.suburbs <- plotAuralLandscape(a, taxa = 'chickadee|wren|goldfinch|dove|robin')
 ```
 
 The leading edge of a few bird-harbingers of spring:
